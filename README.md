@@ -1,2 +1,2 @@
-# vladyslav-kurovskyi
+# Applied skills project
 applied-skills-project
