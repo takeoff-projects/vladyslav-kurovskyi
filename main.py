@@ -35,7 +35,7 @@ def users():
 @app.route("/api/messages/<id>", methods = ['GET', 'DELETE'])
 def user(id):
     if request.method == 'GET':
-        return db.collection(u'users').document(id).to_dict()
+        return db.collection(u'users').document(id).get().to_dict()
     if request.method == 'DELETE':
         db.collection(u'users').document(id).delete()
         return {}, 200
