@@ -9,28 +9,33 @@ schemes:
 produces:
   - application/json
 x-google-backend:
-  address: applied-skills-project
+  address: https://applied-skills-project-5ygjeqjcuq-lm.a.run.app
   protocol: h2
 paths:
   /api/messages:
     get:
+      operationId: get-messages
       summary: Get messages
       responses:
         '200':
           description: A successful response
           schema:
             type: array
+            items:
+              type: string
     post:
+      operationId: post-message
       summary: Post message
       parameters:
         - in: body
+          name: message
+          description: The message to create.
           schema:
             type: object
             properties:
               message:
                 type: string
-          example:
-            message: Test message
+                example: Test message
       responses:
         '200':
           description: A successful response
@@ -38,20 +43,30 @@ paths:
             type: string
   /api/messages/{id}:
     get:
+      operationId: get-message
       summary: Get message
       parameters:
         - in: path
           name: id
-          schema:
-            type: string
+          type: string
           required: true
           description: id of message to get
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
     delete:
+      operationId: delete-message
       summary: Delete message
       parameters:
         - in: path
           name: id
-          schema:
-            type: string
+          type: string
           required: true
           description: id of message to get
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
